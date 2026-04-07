@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Examination</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app" id="app">
+
+    <!-- START SCREEN -->
+    <div class="screen" id="startScreen">
+        <div class="start-card">
+            <div class="badge">20 Questions · 10s each</div>
+            <h1>Online<br>Examination</h1>
+            <p class="start-desc">Test your knowledge across programming, science, and general topics. You have <strong>10 seconds</strong> per question.</p>
+            <ul class="rules">
+                <li>📋 20 multiple choice questions</li>
+                <li>⏱ 10 seconds per question</li>
+                <li>⚠️ Unanswered questions count as wrong</li>
+                <li>✅ Results shown immediately after</li>
+            </ul>
+            <button class="btn-primary" onclick="startExam()">Begin Exam →</button>
+        </div>
+    </div>
+
+    <!-- EXAM SCREEN -->
+    <div class="screen hidden" id="examScreen">
+        <div class="exam-header">
+            <div class="progress-info">
+                <span id="questionCounter">Question 1 of 20</span>
+                <div class="progress-bar-wrap">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+            <div class="timer-ring">
+                <svg viewBox="0 0 60 60">
+                    <circle cx="30" cy="30" r="26" class="ring-bg"/>
+                    <circle cx="30" cy="30" r="26" class="ring-fill" id="timerRing"/>
+                </svg>
+                <span class="timer-num" id="timerNum">10</span>
+            </div>
+        </div>
+
+        <div class="question-area" id="questionArea">
+            <p class="q-index" id="qIndex">Q1</p>
+            <p class="q-text" id="qText">Loading...</p>
+            <div class="options-grid" id="optionsGrid"></div>
+        </div>
+
+        <div class="exam-footer">
+            <button class="btn-secondary" onclick="skipQuestion()">Skip →</button>
+            <button class="btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next →</button>
+        </div>
+    </div>
+
+    <!-- RESULT SCREEN -->
+    <div class="screen hidden" id="resultScreen">
+        <div class="result-header">
+            <div class="score-ring">
+                <svg viewBox="0 0 140 140">
+                    <circle cx="70" cy="70" r="60" class="score-bg"/>
+                    <circle cx="70" cy="70" r="60" class="score-fill" id="scoreRing"/>
+                </svg>
+                <div class="score-text">
+                    <span id="scoreNum">0</span>
+                    <small id="scoreTotal">/20</small>
+                </div>
+            </div>
+            <div class="result-meta">
+                <h2 id="resultHeading">Results</h2>
+                <p id="resultMsg"></p>
+                <button class="btn-primary" onclick="restartExam()">Try Again</button>
+            </div>
+        </div>
+
+        <div class="review-section">
+            <h3>Answer Review</h3>
+            <div id="reviewList"></div>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
